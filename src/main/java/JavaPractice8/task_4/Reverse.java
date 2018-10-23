@@ -1,10 +1,9 @@
-package com.akhmetyanov.task_4;
+package task_4;
 
 import java.util.ArrayList;
-import java.util.ListIterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
-import java.lang.Integer;
 
 public class Reverse<E> {
     private ListIterator<E> it;

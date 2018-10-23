@@ -1,6 +1,4 @@
-package com.akhmetyanov.task_1;
-
-import java.lang.Exception;
+package task_1;
 
 public class Task_1 {
     public static void addNew(int result, int n) {

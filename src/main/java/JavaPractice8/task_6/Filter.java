@@ -1,6 +1,7 @@
-package com.akhmetyanov.task_6;
+package task_6;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Filter {
     public void getPopularDept(List<Student> lst){

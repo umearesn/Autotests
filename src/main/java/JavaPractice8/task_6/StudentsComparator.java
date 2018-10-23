@@ -1,4 +1,4 @@
-package com.akhmetyanov.task_6;
+package task_6;
 
 import java.util.Comparator;
 

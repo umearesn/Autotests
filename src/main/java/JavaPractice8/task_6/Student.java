@@ -1,6 +1,4 @@
-package com.akhmetyanov.task_6;
-
-import java.lang.String;
+package task_6;
 
 public class Student {
     private String name;

@@ -1,4 +1,4 @@
-package com.akhmetyanov.task_3;
+package task_3;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
