@@ -10,7 +10,9 @@ public class Filter {
         lst.forEach(student -> topDepts.put(student.getDepartment(), topDepts.containsKey(student.getDepartment())
                 ? topDepts.get(student.getDepartment()) + 1 : 1));
         System.out.printf("%s \n", "Top 3: ");
-        topDepts.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(3).forEach(pair -> System.out.printf("%s \n", pair.getKey()));
+        topDepts.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).limit(3)
+                .forEach(pair -> System.out.printf("%s \n", pair.getKey()));
     }
 
     public static void main(String[] args) {
