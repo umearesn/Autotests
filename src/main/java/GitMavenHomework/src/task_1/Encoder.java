@@ -92,8 +92,8 @@ public class Encoder extends Thread {
     @Override
     public void run() {
         try {
-            KeyPair pair = new KeyPair(getPublic("src/main/java/GitMavenHomework/resources/rsapub.der"),
-                    getPrivate("src/main/java/GitMavenHomework/resources/rsapriv.der"));
+            KeyPair pair = new KeyPair(getPublic("src/main/java/GitMavenHomework/keys/rsapub.der"),
+                    getPrivate("src/main/java/GitMavenHomework/keys/rsapriv.der"));
             String modPassword = "", modEmail = "";
             if(this.isEncoding) {
                 modPassword = Base64.getEncoder().encodeToString(this.password.getBytes());
