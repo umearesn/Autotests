@@ -13,14 +13,14 @@ public class Task_1 {
         Scanner in = new Scanner(System.in);
         do{
             name = in.next();
-            file = new File("src/main/java/GitMavenHomework/resources/" + name);
+            file = new File("src/main/java/GitMavenHomework/src/task_1/resources/" + name);
             if(!file.exists()) {
                 System.out.printf("%s\n", "Can't find file " + name + "!");
             }
         } while (!file.exists());
         System.out.printf("\n%s\n", "Write the name of the file where to write the modified passwords (if such directory exists it will be rewrited!). ");
         name = in.next();
-        aim = new File("src/main/java/GitMavenHomework/results/" + name);
+        aim = new File("src/main/java/GitMavenHomework/src/task_1/results/" + name);
         if(aim.exists()) {
             FileWriter writer = new FileWriter(aim);
             writer.write("");
