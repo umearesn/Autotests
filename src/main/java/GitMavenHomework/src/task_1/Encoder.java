@@ -1,6 +1,7 @@
 package task_1;
 
 import javax.crypto.Cipher;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -12,14 +13,18 @@ import java.util.Base64;
 public class Encoder extends Thread {
     private String email;
     private String password;
+    private boolean isEncoding;
+    private File aim;
 
-    Encoder(String input) {
+    Encoder(String input, boolean isEncoding, File aim) {
         int i = 0;
         while (i < input.length() && input.charAt(i) != '|') {
             i++;
         }
         this.password = input.substring(0, i);
         this.email = input.substring(i + 1, input.length());
+        this.isEncoding = isEncoding;
+        this.aim = aim;
     }
 
     public byte[] readAsBytes(String filepath) throws IOException {
@@ -78,10 +83,10 @@ public class Encoder extends Thread {
     public static String decrypt(String cipherText, PrivateKey privateKey) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(cipherText);
 
-        Cipher decriptCipher = Cipher.getInstance("RSA");
-        decriptCipher.init(Cipher.DECRYPT_MODE, privateKey);
+        Cipher decryptCipher = Cipher.getInstance("RSA");
+        decryptCipher.init(Cipher.DECRYPT_MODE, privateKey);
 
-        return new String(decriptCipher.doFinal(bytes), StandardCharsets.UTF_8);
+        return new String(decryptCipher.doFinal(bytes), StandardCharsets.UTF_8);
     }
 
     @Override
@@ -89,9 +94,15 @@ public class Encoder extends Thread {
         try {
             KeyPair pair = new KeyPair(getPublic("src/main/java/GitMavenHomework/resources/rsapub.der"),
                     getPrivate("src/main/java/GitMavenHomework/resources/rsapriv.der"));
-            String encodedPassword = Base64.getEncoder().encodeToString(this.password.getBytes());
-            String cipherEmail = encrypt(this.email, pair.getPublic());
-            Output printer = new Output(encodedPassword.concat("|").concat(cipherEmail));
+            String modPassword = "", modEmail = "";
+            if(this.isEncoding) {
+                modPassword = Base64.getEncoder().encodeToString(this.password.getBytes());
+                modEmail = encrypt(this.email, pair.getPublic());
+            } else {
+                modPassword = new String(Base64.getMimeDecoder().decode(this.password));
+                modEmail = decrypt(this.email, pair.getPrivate());
+            }
+            Output printer = new Output(modPassword.concat("|").concat(modEmail), aim);
             printer.start();
         } catch (Exception err) {}
     }

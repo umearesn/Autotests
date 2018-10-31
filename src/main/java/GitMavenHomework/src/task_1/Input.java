@@ -6,17 +6,21 @@ import java.util.Scanner;
 
 public class Input extends Thread {
     private File file;
+    private boolean isEncoding;
+    private File aim;
 
-    Input(File file) throws Exception{
+    Input(File file, boolean isEncoding, File aim) throws Exception{
        this.file = file;
+       this.isEncoding = isEncoding;
+       this.aim = aim;
     }
     @Override
     public void run(){
         try{
             FileReader parser = new FileReader(this.file);
             Scanner scan = new Scanner(parser);
-            while(scan.hasNextLine()){
-                Encoder encoding = new Encoder(scan.nextLine());
+            while (scan.hasNextLine()) {
+                Encoder encoding = new Encoder(scan.nextLine(), this.isEncoding, aim);
                 encoding.start();
             }
             scan.close();
