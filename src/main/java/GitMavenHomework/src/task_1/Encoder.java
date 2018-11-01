@@ -1,7 +1,6 @@
 package task_1;
 
 import javax.crypto.Cipher;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -14,9 +13,9 @@ public class Encoder extends Thread {
     private String email;
     private String password;
     private boolean isEncoding;
-    private File aim;
+    private String aimFileName;
 
-    Encoder(String input, boolean isEncoding, File aim) {
+    Encoder(String input, boolean isEncoding, String aimFileName) {
         int i = 0;
         while (i < input.length() && input.charAt(i) != '|') {
             i++;
@@ -24,20 +23,19 @@ public class Encoder extends Thread {
         this.password = input.substring(0, i);
         this.email = input.substring(i + 1, input.length());
         this.isEncoding = isEncoding;
-        this.aim = aim;
+        this.aimFileName = aimFileName;
     }
 
-    public byte[] readAsBytes(String filepath) throws IOException {
+    private byte[] readAsBytes(String filepath) throws IOException {
         try {
             return Files.readAllBytes(Paths.get(filepath));
         } catch (IOException error) {
             System.out.printf("\n%s", "Fail while reading as bytes.");
-            byte res[] = null;
-            return res;
+            return null;
         }
     }
 
-    public PublicKey getPublic(String filepath) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+    private PublicKey getPublic(String filepath) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
         try {
             X509EncodedKeySpec keyBytes = new X509EncodedKeySpec(readAsBytes(filepath));
             KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -54,7 +52,7 @@ public class Encoder extends Thread {
         }
     }
 
-    public PrivateKey getPrivate(String filepath) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
+    private PrivateKey getPrivate(String filepath) throws IOException, InvalidKeySpecException, NoSuchAlgorithmException {
     try{
         PKCS8EncodedKeySpec keyBytes = new PKCS8EncodedKeySpec(readAsBytes(filepath));
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
@@ -71,7 +69,7 @@ public class Encoder extends Thread {
     }
 }
 
-    public static String encrypt(String plainText, PublicKey publicKey) throws Exception {
+    private static String encrypt(String plainText, PublicKey publicKey) throws Exception {
         Cipher encryptCipher = Cipher.getInstance("RSA");
         encryptCipher.init(Cipher.ENCRYPT_MODE, publicKey);
 
@@ -80,7 +78,7 @@ public class Encoder extends Thread {
         return Base64.getEncoder().encodeToString(cipherText);
     }
 
-    public static String decrypt(String cipherText, PrivateKey privateKey) throws Exception {
+    private static String decrypt(String cipherText, PrivateKey privateKey) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(cipherText);
 
         Cipher decryptCipher = Cipher.getInstance("RSA");
@@ -102,7 +100,7 @@ public class Encoder extends Thread {
                 modPassword = new String(Base64.getMimeDecoder().decode(this.password));
                 modEmail = decrypt(this.email, pair.getPrivate());
             }
-            Output printer = new Output(modPassword.concat("|").concat(modEmail), aim);
+            Output printer = new Output(modPassword.concat("|").concat(modEmail), this.aimFileName);
             printer.start();
         } catch (Exception err) {}
     }
