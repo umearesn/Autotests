@@ -9,6 +9,7 @@
         <module name="GitMavenHomework" />
         <module name="Homeworks" />
         <module name="JavaPractice8" />
+        <module name="JUnitHamcrestMockitoHomework" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
