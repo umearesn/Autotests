@@ -1,14 +1,12 @@
 package task_1.NegativeUnitTests;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
+import org.junit.Test;
+import java.util.ArrayList;
 
-@RunWith(Suite.class)
-
-@Suite.SuiteClasses({
-        NegativeTest1.class,
-        NegativeTest2.class
-})
+import static org.junit.Assert.assertNotEquals;
+import static task_1.PrimeNumbers.filterNumbers;
 
 public class NegativeTestSuite {
+
+
 }

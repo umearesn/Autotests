@@ -7,7 +7,21 @@ import static java.lang.StrictMath.sqrt;
 
 public class PrimeNumbers {
 
-    public static ArrayList<Integer> filterNumbers(int n){
+    private static int correctInput(){
+        int res;
+        Scanner in = new Scanner(System.in);
+        try{
+            res = in.nextInt();
+        } catch (Exception incorrectInput){
+            System.out.println("Input is invalid. Try again!");
+            res = correctInput();
+        }
+        return res;
+    }
+
+    public static ArrayList<Integer> filterNumbers(){
+        System.out.printf("%s\n", "Please, enter the upper bound of numbers:");
+        int n = correctInput();
         ArrayList<Integer> allNumbers = new ArrayList<>();
         for(int i = 2; i <= n; i++){
             allNumbers.add(i);
@@ -20,6 +34,7 @@ public class PrimeNumbers {
         return allNumbers;
     }
 
+
     private static void printPrimeNumbers(ArrayList<Integer> input){
         for (Integer i: input) {
             System.out.printf("%d ", i);
@@ -27,10 +42,7 @@ public class PrimeNumbers {
     }
 
     public static void main(String[] args) {
-        System.out.printf("%s\n", "Please, enter the upper bound of numbers:");
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        printPrimeNumbers(filterNumbers(n));
+        printPrimeNumbers(filterNumbers());
     }
 
 }
