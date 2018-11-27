@@ -19,9 +19,7 @@ public class PrimeNumbers {
         return res;
     }
 
-    public static ArrayList<Integer> filterNumbers(){
-        System.out.printf("%s\n", "Please, enter the upper bound of numbers:");
-        int n = correctInput();
+    public Integer[] filterNumbers(int n){
         ArrayList<Integer> allNumbers = new ArrayList<>();
         for(int i = 2; i <= n; i++){
             allNumbers.add(i);
@@ -31,18 +29,25 @@ public class PrimeNumbers {
                 allNumbers.remove(new Integer(j));
             }
         }
-        return allNumbers;
+        Integer[] res = new Integer[allNumbers.size()];
+        for (int i = 0; i < allNumbers.size(); i++) {
+            res[i] = allNumbers.get(i);
+        }
+        return res;
     }
 
 
-    private static void printPrimeNumbers(ArrayList<Integer> input){
+    private static void printPrimeNumbers(Integer[] input){
         for (Integer i: input) {
             System.out.printf("%d ", i);
         }
     }
 
     public static void main(String[] args) {
-        printPrimeNumbers(filterNumbers());
+        System.out.printf("%s\n", "Please, enter the upper bound of numbers:");
+        int n = correctInput();
+        PrimeNumbers prime = new PrimeNumbers();
+        printPrimeNumbers(prime.filterNumbers(n));
     }
 
 }
