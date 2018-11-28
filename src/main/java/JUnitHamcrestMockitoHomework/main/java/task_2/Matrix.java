@@ -1,113 +1,34 @@
 package task_2;
 
-import javafx.util.Pair;
-import org.omg.CORBA.INTERNAL;
-
-import javax.swing.*;
-import java.util.*;
-
 public class Matrix {
-    private ArrayList<ArrayList<Integer>> matrix = null;
-    private Integer height = null, width = null;
+    private int width = 0, height = 0;
+    private int matrix[][];
 
-    private Integer correctInput(){
-        Integer res;
-        Scanner in = new Scanner(System.in);
-        try{
-            res = in.nextInt();
-        } catch (Exception incorrectInput){
-            System.out.println("Input is invalid. Try again!");
-            res = correctInput();
-        }
-        return res;
+    Matrix(){
+        this.height = 0;
+        this.width = 0;
+        this.matrix = null;
     }
 
-    public void initMatrix(){
-        System.out.println("Please, enter the height of the matrix:");
-        this.height = correctInput();
-        System.out.println("Please, enter the width of the matrix:");
-        this.width = correctInput();
-        matrix = new ArrayList<>(this.height);
-        for(int i = 0; i < this.height; i++) {
-            matrix.add(i, new ArrayList<Integer>(this.width));
-            System.out.printf("\n%s\n", "Enter elements of the first row:");
-            for( int j = 0; j < this.width; j++){
-                System.out.printf("%s%d;%d%s", "Enter the element at the position (", i, j, "): ");;
-                matrix.get(i).add(j, correctInput());
-            }
-        }
+    Matrix(int height, int width){
+        this.height = height;
+        this.width = width;
+        this.matrix = new int[height][width];
     }
 
-    public void printMatrix(){
-        for(int i = 0; i < this.height; i++) {
-            for( int j = 0; j < this.width; j++){
-                System.out.printf("%d ", matrix.get(i).get(j));
-            }
-            System.out.println();
-        }
+    public int getHeight(){
+        return this.height;
     }
 
-    ///
-    public static <K, V> void printMap(Map<K, V> map) {
-        for (Map.Entry<K, V> entry : map.entrySet()) {
-            System.out.println("Key : " + entry.getKey()
-                    + " Value : " + entry.getValue());
-        }
+    public int getWidth(){
+        return this.width;
     }
 
-    ///
-
-    public void sortTheRows(){
-        ArrayList<Integer> rowSum = new ArrayList<>(this.height);
-        for(int i = 0; i < this.height; i++){
-            rowSum.add(i, 0);
-            for(int j = 0; j < this.width; j++){
-                rowSum.set(i, rowSum.get(i) + this.matrix.get(i).get(j));
-            }
-        }
-        /*
-        for (Integer elem: rowSum) {
-            System.out.println(elem);
-        }
-        */
-        Map<Integer, Integer> rows = new TreeMap<Integer, Integer>(Collections.reverseOrder());
-        for(int i = 0; i < this.height; i++){
-            rows.put(rowSum.get(i), i);
-        }
-        System.out.println("Test");
-        Matrix res = new Matrix();
-        //res.height = 0;
-        for (Map.Entry<Integer, Integer> entry : rows.entrySet()) {
-            res.matrix = new ArrayList<>(this.height);
-            res.width = this.width;
-            res.matrix.add(this.matrix.get(entry.getValue()));
-            res.height++;
-            this.matrix = res.matrix;
-
-            for(int i = 0; i < res.height; i++) {
-                for( int j = 0; j < res.width; j++){
-                    System.out.printf("%d ", res.matrix.get(i).get(j));
-                }
-                System.out.println();
-            }
-        }
-
-
-        this.matrix = res.matrix;
-        for(int i = 0; i < res.height; i++) {
-            for( int j = 0; j < res.width; j++){
-                System.out.printf("%d ", res.matrix.get(i).get(j));
-            }
-            System.out.println();
-        }
-        //printMap(rows);
+    public int getElemAtPos(int i, int j){
+        return this.matrix[i][j];
     }
 
-    public static void main(String[] args) {
-        Matrix table = new Matrix();
-        table.initMatrix();
-        table.sortTheRows();
-        //table.printMatrix();
+    public void setElemAtPos(int i, int j, int value){
+        this.matrix[i][j] = value;
     }
-
 }
