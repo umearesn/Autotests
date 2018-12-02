@@ -18,30 +18,17 @@ public class PositiveTestSuite {
     private PrimeNumbers prime = new PrimeNumbers();
 
     @Test
-    public void test_positive1(){
-        Integer[] actual = prime.filterNumbers(1);
-        Integer[] expected = {};
-        assertArrayEquals("Массив содержит лишние числа", expected, actual);
-    }
-
-    @Test
-    public void test_positive2(){
+    public void test_positive_above_zero(){
         Integer[] actual = prime.filterNumbers(10);
         Integer[] expected = {2, 3, 5, 7};
-        assertArrayEquals("Массивы не одинаковы", expected, actual);
+        assertArrayEquals("Массивы не равны", expected, actual);
     }
 
     @Test
-    public void test_positive3(){
-        Integer[] actual = prime.filterNumbers(2);
-        Integer[] expected = {1, 2};
+    public void test_positive_zero(){
+        Integer[] actual = prime.filterNumbers(0);
+        Integer[] expected = {};
         assertNotEquals("Массив содержит лишние числа", expected, actual);
     }
 
-    @Test
-    public void test_positive4(){
-        Integer[] actual = prime.filterNumbers(5);
-        Integer[] expected = {2, 5};
-        assertNotEquals("Массив содержит не все простые числа из диапазона", expected, actual);
-    }
 }
