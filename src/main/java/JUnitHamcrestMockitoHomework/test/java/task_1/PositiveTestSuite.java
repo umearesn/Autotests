@@ -1,17 +1,9 @@
-package task_1.PositiveUnitTests;
+package task_1;
 
-import org.junit.Before;
 import org.junit.Test;
-import task_1.PrimeNumbers;
-
-import java.util.ArrayList;
-
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-
-import static task_1.PrimeNumbers.*;
 
 public class PositiveTestSuite {
 

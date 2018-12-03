@@ -1,14 +1,8 @@
-package task_1.NegativeUnitTests;
+package task_1;
 
 import org.junit.Test;
-import org.mockito.internal.matchers.Null;
-import task_1.PrimeNumbers;
-
-import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static task_1.PrimeNumbers.*;
 
 public class NegativeTestSuite {
 

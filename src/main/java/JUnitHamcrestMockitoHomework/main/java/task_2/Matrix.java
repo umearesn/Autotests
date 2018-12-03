@@ -4,13 +4,13 @@ public class Matrix {
     private int width = 0, height = 0;
     private int matrix[][];
 
-    Matrix(){
+    public Matrix(){
         this.height = 0;
         this.width = 0;
         this.matrix = null;
     }
 
-    Matrix(int height, int width){
+    public Matrix(Integer height, Integer width){
         this.height = height;
         this.width = width;
         this.matrix = new int[height][width];
