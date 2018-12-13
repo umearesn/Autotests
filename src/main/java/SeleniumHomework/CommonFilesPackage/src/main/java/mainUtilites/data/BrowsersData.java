@@ -1,4 +1,4 @@
-package data;
+package mainUtilites.data;
 
 public enum BrowsersData {
     Chrome("Google Chrome");

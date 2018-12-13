@@ -1,6 +1,6 @@
-package basic_pages;
+package mainUtilites.basicPages;
 
-import wait.StandartWaiter;
+import mainUtilites.wait.StandartWaiter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -8,6 +8,7 @@ public abstract class AbstractPage<T> {
 
     protected WebDriver driver = null;
     protected StandartWaiter waiter = null;
+    protected final String url = "/";
 
     public AbstractPage(WebDriver driver){
         this.driver = driver;

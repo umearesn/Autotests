@@ -1,4 +1,4 @@
-import basic_pages.AbstractPage;
+import mainUtilites.basicPages.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,12 +8,6 @@ import static org.junit.Assert.assertTrue;
 
 public class HelloWorldSearch extends AbstractPage<HelloWorldSearch> {
 
-    private final String url = "/";
-
-    public HelloWorldSearch(WebDriver driver){
-        super(driver);
-    }
-
     @FindBy(xpath = "//input[@name='q']")
     private WebElement inputField;
 
@@ -22,6 +16,10 @@ public class HelloWorldSearch extends AbstractPage<HelloWorldSearch> {
 
     @FindBy(xpath = "//div[@id='resultStats']")
     private WebElement resultsField;
+
+    public HelloWorldSearch(WebDriver driver){
+        super(driver);
+    }
 
     public HelloWorldSearch open(){
         return super.open(url);

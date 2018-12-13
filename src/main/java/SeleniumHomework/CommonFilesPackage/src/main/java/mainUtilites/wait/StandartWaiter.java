@@ -1,4 +1,4 @@
-package wait;
+package mainUtilites.wait;
 
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
