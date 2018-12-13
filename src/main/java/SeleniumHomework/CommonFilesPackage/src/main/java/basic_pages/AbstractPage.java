@@ -1,13 +1,12 @@
-package common_packages.basic_pages;
+package basic_pages;
 
-import common_packages.wait.StandartWaiter;
+import wait.StandartWaiter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public abstract class AbstractPage<T> {
 
     protected WebDriver driver = null;
-    protected String domainTemplate = "http[s]?://.*?(?::\\d+)?";
     protected StandartWaiter waiter = null;
 
     public AbstractPage(WebDriver driver){
@@ -18,7 +17,6 @@ public abstract class AbstractPage<T> {
 
     protected T open(String url){
         driver.get(System.getProperty("webdriver.base.url") + url);
-        //driver.get("http://www.google.com/");
         return (T) this;
     }
 
@@ -32,7 +30,5 @@ public abstract class AbstractPage<T> {
         driver.get(url);
         return (T) this;
     }
-
-    protected abstract T pageShouldBeOpened();
 
 }

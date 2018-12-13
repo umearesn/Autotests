@@ -1,4 +1,4 @@
-package common_packages.data;
+package data;
 
 public enum BrowsersData {
     Chrome("Google Chrome");
