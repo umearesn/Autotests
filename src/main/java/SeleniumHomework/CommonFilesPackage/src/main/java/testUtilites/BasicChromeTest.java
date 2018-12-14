@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-public abstract class basicChromeTest {
+public class BasicChromeTest {
 
     protected WebDriver driver = null;
 
@@ -22,6 +22,4 @@ public abstract class basicChromeTest {
         driver.quit();
     }
 
-    @Test
-    public abstract void test();
 }

@@ -1,7 +1,7 @@
 import org.junit.Test;
-import testUtilites.basicChromeTest;
+import testUtilites.BasicChromeTest;
 
-public class ShowMoreButton_Test extends basicChromeTest {
+public class ShowMoreButton_Test extends BasicChromeTest {
 
     @Test
     public void test(){

@@ -12,6 +12,7 @@
         <module>CommonFilesPackage</module>
         <module>Task_1.1</module>
         <module>Task_1.2</module>
+        <module>Task_1.3</module>
     </modules>
 
     <dependencies>
