@@ -1,4 +1,6 @@
 import mainUtilites.basicPages.AbstractPage;
+import mainUtilites.pageNavigation.Domain;
+import mainUtilites.pageNavigation.PageURL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +11,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
+@Domain("https://pets.mail.ru")
+@PageURL("/news")
 public class ShowMoreButton extends AbstractPage<ShowMoreButton> {
 
     @FindBy(xpath = "//button[@class='button js-pgng_more_link']")
@@ -24,7 +28,7 @@ public class ShowMoreButton extends AbstractPage<ShowMoreButton> {
     }
 
     public ShowMoreButton open(){
-        return super.open(url);
+        return super.open();
     }
 
     public ShowMoreButton getMore() {

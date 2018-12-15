@@ -7,7 +7,7 @@ public class NameSecret_Test extends BasicChromeTest {
     public void test_openPresentedName(){
         new NameSecret(driver)
                 .open()
-                .openPresentedName()
+                .openPresentedNameWithA()
                 .checkThatProperPageOpened();
     }
 
@@ -16,7 +16,16 @@ public class NameSecret_Test extends BasicChromeTest {
         new NameSecret(driver)
                 .open()
                 .openPageWithMoreNames()
-                .openPresentedName()
+                .openPresentedNameWithA()
+                .checkThatProperPageOpened();
+    }
+
+    @Test
+    public void test_openPageWithExtraNames(){
+        String[] params = {"a", "b", "c"};
+        new NameSecret(driver)
+                .open("namesWithLetter", params)
+                .openPresentedNameWithA()
                 .checkThatProperPageOpened();
     }
 

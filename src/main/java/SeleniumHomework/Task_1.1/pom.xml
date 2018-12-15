@@ -21,7 +21,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <webdriver.timeouts.implicitlywait>5000</webdriver.timeouts.implicitlywait>
-        <webdriver.base.url>https://google.com</webdriver.base.url>
     </properties>
 
     <build>
@@ -41,7 +40,6 @@
                 <configuration>
                     <systemPropertyVariables>
                         <webdriver.timeouts.implicitlywait>${webdriver.timeouts.implicitlywait}</webdriver.timeouts.implicitlywait>
-                        <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

@@ -1,4 +1,5 @@
 import mainUtilites.basicPages.AbstractPage;
+import mainUtilites.pageNavigation.Domain;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -6,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.Assert.assertTrue;
 
+@Domain("https://google.com")
 public class HelloWorldSearch extends AbstractPage<HelloWorldSearch> {
 
     @FindBy(xpath = "//input[@name='q']")
@@ -22,7 +24,7 @@ public class HelloWorldSearch extends AbstractPage<HelloWorldSearch> {
     }
 
     public HelloWorldSearch open(){
-        return super.open(url);
+        return super.open();
     }
 
     public HelloWorldSearch setText(String query){
