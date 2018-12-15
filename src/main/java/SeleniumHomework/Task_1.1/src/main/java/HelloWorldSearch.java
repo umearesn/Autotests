@@ -1,4 +1,5 @@
 import mainUtilites.basicPages.AbstractPage;
+import mainUtilites.logger.Step;
 import mainUtilites.pageNavigation.Domain;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,6 +28,7 @@ public class HelloWorldSearch extends AbstractPage<HelloWorldSearch> {
         return super.open();
     }
 
+    @Step("Sets text for the query.")
     public HelloWorldSearch setText(String query){
         inputField.sendKeys(query);
         return this;
