@@ -1,5 +1,4 @@
 import org.junit.Test;
-import pages.PageWithPagination;
 
 public class Test_PageWithPagination {
 

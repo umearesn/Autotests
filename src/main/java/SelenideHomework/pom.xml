@@ -8,6 +8,12 @@
     <artifactId>SelenideHomework</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>CommonFilesPackage_Selenide</module>
+        <module>Rating</module>
+        <module>Channels</module>
+        <module>Answers</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -39,6 +45,11 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
             <version>2.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>Technotrack</groupId>
+            <artifactId>SelenideHomework</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
