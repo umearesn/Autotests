@@ -59,21 +59,4 @@ public class PageObject<T> {
         return (T) this;
     }
 
-    protected T isURLValid(){
-        boolean result = false;
-        try{
-            if( this.getClass().isAnnotationPresent(PageToOpenURL.class) ) {
-                Pattern urlPattern = Pattern.compile(this.getClass().getAnnotation(PageToOpenURL.class).value());
-                Matcher urlMatcher = urlPattern.matcher(WebDriverRunner.url());
-                result = urlMatcher.matches();
-            } else {
-                throw new Exception();
-            }
-        } catch (Exception error){
-            System.out.println("URL pattern is not given.");
-        }
-        assertTrue("Ссылка требуемого формата не открылась.", result);
-        return (T) this;
-    }
-
 }

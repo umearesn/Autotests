@@ -7,9 +7,6 @@ import commonFiles.pages.PageObject;
 import commonFiles.pageNavigation.Domain;
 import commonFiles.pageNavigation.PageToOpenURL;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-
 @Domain("https://top.mail.ru")
 @PageToOpenURL("/Rating/All/Today/Visitors")
 public class PageWithPagination extends PageObject<PageWithPagination> {
@@ -31,7 +28,7 @@ public class PageWithPagination extends PageObject<PageWithPagination> {
 
     @Step("Проверяем, что открылась нужная страница")
     public PageWithPagination checkThatProperPageOpened(){
-        SelenideElement firstNotePresented = Selenide.$(By.xpath("//td[@class='it-cbox it-right']"));
+        SelenideElement firstNotePresented = Selenide.$(By.xpath("//tr[@class='ReportTable-TRow']/descendant::td"));
         firstNotePresented.shouldHave(Condition.text(Integer.toString(30*(pageWentTo - 1)+1)));
         return this;
     }
